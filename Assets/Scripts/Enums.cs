@@ -1,41 +1,75 @@
 
 using Enums;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Enums
 {
-    public enum RoomLayout
-    {
-        UDLR = 0,
-        UDL = 1,
-        UDR = 2,
-        ULR = 3,
-        DLR = 4,
-        UD = 5,
-        UL = 6,
-        UR = 7,
-        DL = 8,
-        DR = 9,
-        LR = 10,
-        U = 11,
-        D = 12,
-        L = 13,
-        R = 14,
-        None = 15,
-    }
-
-    public enum Origin
+    public enum Orientation
     { 
-        Up = 0, 
-        Down = 1,
-        Left = 2,
-        Right = 3,
+        Horizontal =0,
+        Vertical = 1,
     }
 
-}
-[System.Serializable]
-public class RoomConfig 
-{
-    public Origin CameFrom;
-    public RoomLayout[] AvailableLayouts;
+    public enum RelativePosition
+    { 
+        Up,
+        Down,
+        Left,
+        Right,
+    }
+    
 }
 
+public class RoomNode : Node 
+{
+    public RoomNode(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, Node parentNode, int index) : base(parentNode)
+    { 
+        this.BottomLeftAreaCorner = bottomLeftAreaCorner;
+        this.TopRightAreaCorner = topRightAreaCorner;
+        this.BottomRightAreaCorner = new Vector2Int(topRightAreaCorner.x, bottomLeftAreaCorner.y);
+        this.TopLeftAreaCorner = new Vector2Int(bottomLeftAreaCorner.x, topRightAreaCorner.y);
+        this.TreeLayerIndex = index;
+    }
+
+    public int Width { get => (int)(TopRightAreaCorner.x - BottomLeftAreaCorner.x); }
+    public int Length { get => (int)(TopRightAreaCorner.y - BottomLeftAreaCorner.y); }
+}
+
+public abstract class Node
+{
+    private List<Node> childrenNodeList;
+
+    public List<Node> ChildrenNodeList { get => childrenNodeList; }
+
+    public bool Visited { get; set; }
+    public Vector2Int BottomLeftAreaCorner { get; set; }
+    public Vector2Int BottomRightAreaCorner { get; set; }
+    public Vector2Int TopRightAreaCorner { get; set; }
+    public Vector2Int TopLeftAreaCorner { get; set; }
+    public int TreeLayerIndex { get; set; }
+
+    public Node Parent { get; set; }
+
+    public Node(Node parentNode)
+    { 
+        childrenNodeList = new List<Node>();
+        this.Parent = parentNode;
+        if (parentNode != null)
+        {
+            parentNode.AddChild(this);
+        }
+    }
+
+    public void AddChild(Node node)
+    {
+        childrenNodeList.Add(node);
+    }
+
+    public void RemoveChilld(Node node) 
+    {
+        childrenNodeList.Remove(node);
+    }
+}

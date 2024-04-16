@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] RoomManager roomManager;
+    [SerializeField] DungeonManager roomManager;
 
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     }
 
     #region Properties
-    public static RoomManager RoomManager { get { return Instance.roomManager; } }
+    public static DungeonManager RoomManager { get { return Instance.roomManager; } }
 
     #endregion
 }
