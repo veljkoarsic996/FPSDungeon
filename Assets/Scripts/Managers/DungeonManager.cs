@@ -9,7 +9,7 @@ public class DungeonManager : MonoBehaviour
 
     [Header("Generator")]
     [SerializeField] private DungeonGenerator dungeonGenerator;
-    
+
     [Header("Fields")]
     [SerializeField] private int dungeonWidth;
     [SerializeField] private int dungeonLength;
@@ -22,12 +22,12 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private float roomBottomCornerModifier;
     [Range(.7f, 1f)]
     [SerializeField] private float roomTopCornerModifier;
-    [Range(0,2)]
+    [Range(0, 2)]
     [SerializeField] private int roomOffset;
 
     [SerializeField] private GameObject wallVertical;
     [SerializeField] private GameObject wallHorizontal;
-    
+
     List<Vector3Int> possibleDoorVerticalPosition;
     List<Vector3Int> possibleDoorHorizontalPosition;
     List<Vector3Int> possibleWallVerticalPosition;
@@ -47,7 +47,7 @@ public class DungeonManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else 
+        else
         {
             Destroy(gameObject);
         }
@@ -84,12 +84,12 @@ public class DungeonManager : MonoBehaviour
         {
             wallHeight = wall.WallRenderer.bounds.size.y;
         }
-        
+
         roomList.Clear();
 
         for (int i = 0; i < listOfRooms.Count; i++)
         {
-            CreateMesh(i+1, listOfRooms[i].BottomLeftAreaCorner, listOfRooms[i].TopRightAreaCorner, listOfRooms[i].isCorridor);
+            CreateMesh(i + 1, listOfRooms[i].BottomLeftAreaCorner, listOfRooms[i].TopRightAreaCorner, listOfRooms[i].isCorridor);
         }
         CreateWalls(wallParent);
     }
@@ -120,10 +120,15 @@ public class DungeonManager : MonoBehaviour
 
         Vector3[] vertices = new Vector3[]
         {
-        topLeftV,
-        topRightV,
-        bottomLeftV,
-        bottomRightV
+            topLeftV,
+            topRightV,
+            bottomLeftV,
+            bottomRightV,
+            // Repeating the same vertices for the bottom face
+            topLeftV,
+            topRightV,
+            bottomLeftV,
+            bottomRightV
         };
 
         Vector2[] uvs = new Vector2[vertices.Length];
@@ -134,12 +139,12 @@ public class DungeonManager : MonoBehaviour
 
         int[] triangles = new int[]
         {
-        0,
-        1,
-        2,
-        2,
-        1,
-        3
+            // Top face
+            0, 1, 2,
+            2, 1, 3,
+            // Bottom face
+            6, 5, 4, // Reversed winding
+            6, 7, 5
         };
 
         Mesh mesh = new Mesh();
@@ -148,7 +153,7 @@ public class DungeonManager : MonoBehaviour
         mesh.triangles = triangles;
 
         GameObject holder = new GameObject();
-        
+
         if (!isCorridor)
         {
             holder.name = "Room " + index;
@@ -175,13 +180,16 @@ public class DungeonManager : MonoBehaviour
 
         GameObject dungeonRoof = new GameObject("Roof" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider));
         dungeonRoof.transform.position = new Vector3(dungeonFloor.transform.position.x, dungeonFloor.transform.position.y + wallHeight, dungeonFloor.transform.position.z);
-        dungeonRoof.transform.localScale = new Vector3(1, 0.01f, 1); 
+        dungeonRoof.transform.localScale = new Vector3(1, 0.01f, 1);
         dungeonRoof.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         dungeonRoof.transform.parent = holder.transform;
         dungeonRoof.GetComponent<MeshFilter>().mesh = mesh;
         dungeonRoof.GetComponent<MeshRenderer>().material = material;
         dungeonRoof.GetComponent<MeshCollider>().sharedMesh = mesh;
         dungeonRoof.GetComponent<MeshCollider>().convex = true;
+
+        dungeonRoof.tag = "Concrete";
+        dungeonFloor.tag = "Concrete";
 
         for (int row = (int)bottomLeftV.x; row < (int)bottomRightV.x; row++)
         {
