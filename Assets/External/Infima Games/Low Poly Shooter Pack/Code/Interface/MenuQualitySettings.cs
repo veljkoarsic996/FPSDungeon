@@ -13,8 +13,6 @@ namespace InfimaGames.LowPolyShooterPack.Interface
     {
         #region FIELDS SERIALIZED
         
-        [Title(label: "Settings")]
-
         [Tooltip("Canvas to play animations on.")]
         [SerializeField]
         private GameObject animatedCanvas;

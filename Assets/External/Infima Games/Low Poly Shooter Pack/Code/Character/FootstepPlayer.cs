@@ -12,28 +12,24 @@ namespace InfimaGames.LowPolyShooterPack
     public class FootstepPlayer : MonoBehaviour
     {
         #region FIELDS SERIALIZED
-        
-        [Title(label: "References")]
+       
 
         [Tooltip("The character's Movement Behaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private MovementBehaviour movementBehaviour;
 
         [Tooltip("The character's Animator component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private Animator characterAnimator;
         
         [Tooltip("The character's footstep-dedicated Audio Source component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private AudioSource audioSource;
-
-        [Title(label: "Settings")]
 
         [Tooltip("Minimum magnitude of the movement velocity at which the audio clips will start playing.")]
         [SerializeField]
         private float minVelocityMagnitude = 1.0f;
         
-        [Title(label: "Audio Clips")]
         
         [Tooltip("The audio clip that is played while walking.")]
         [SerializeField]

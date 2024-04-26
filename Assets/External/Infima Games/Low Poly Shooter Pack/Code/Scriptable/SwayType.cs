@@ -25,14 +25,10 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS SERIALIZED
         
-        [Title(label: "Horizontal")]
-        
         [Tooltip("Horizontal Sway.")]
         [SerializeField]
         private SwayDirection horizontal;
 
-        [Title(label: "Vertical")]
-        
         [Tooltip("Vertical Sway.")]
         [SerializeField]
         private SwayDirection vertical;

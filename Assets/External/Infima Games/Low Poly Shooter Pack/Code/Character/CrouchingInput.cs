@@ -12,17 +12,14 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
 
-        [Title(label: "References")]
-
         [Tooltip("The character's CharacterBehaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private CharacterBehaviour characterBehaviour;
         
         [Tooltip("The character's MovementBehaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private MovementBehaviour movementBehaviour;
 
-        [Title(label: "Settings")]
 
         [Tooltip("If true, the crouch button has to be held to keep crouching.")]
         [SerializeField]

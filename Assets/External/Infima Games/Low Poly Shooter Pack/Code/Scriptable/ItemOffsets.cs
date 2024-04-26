@@ -55,8 +55,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public Vector3 ActionRotation => actionRotation;
         
-        [Title(label: "Standing Offset")]
-        
         [Tooltip("Weapon bone location offset while standing.")]
         [SerializeField]
         private Vector3 standingLocation;
@@ -65,8 +63,6 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private Vector3 standingRotation;
 
-        [Title(label: "Aiming Offset")]
-        
         [Tooltip("Weapon bone location offset while aiming.")]
         [SerializeField]
         private Vector3 aimingLocation;
@@ -74,8 +70,6 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Weapon bone rotation offset while aiming.")]
         [SerializeField]
         private Vector3 aimingRotation;
-        
-        [Title(label: "Running Offset")]
         
         [Tooltip("Weapon bone location offset while running.")]
         [SerializeField]
@@ -85,8 +79,6 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private Vector3 runningRotation;
         
-        [Title(label: "Crouching Offset")]
-        
         [Tooltip("Weapon bone location offset while crouching.")]
         [SerializeField]
         private Vector3 crouchingLocation;
@@ -94,8 +86,6 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Weapon bone rotation offset while crouching.")]
         [SerializeField]
         private Vector3 crouchingRotation;
-        
-        [Title(label: "Action Offset")]
         
         [Tooltip("Weapon bone location offset while performing an action (grenade, melee).")]
         [SerializeField]

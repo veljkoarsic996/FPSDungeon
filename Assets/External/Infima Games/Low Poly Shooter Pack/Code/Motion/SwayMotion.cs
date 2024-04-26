@@ -12,22 +12,20 @@ namespace InfimaGames.LowPolyShooterPack
         #region FIELDS SERIALIZED
         
         [Tooltip("The character's FeelManager component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private FeelManager feelManager;
         
         [Tooltip("The character's Animator component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private Animator characterAnimator;
         
         [Tooltip("The character's InventoryBehaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private InventoryBehaviour inventoryBehaviour;
         
         [Tooltip("The character's CharacterBehaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private CharacterBehaviour characterBehaviour;
-
-        [Title(label: "Settings")]
 
         [Tooltip("The type of motion we want this component to apply.")]
         [SerializeField]

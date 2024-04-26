@@ -11,13 +11,10 @@ namespace InfimaGames.LowPolyShooterPack.Interface
     {
         #region FIELDS SERIALIZED
         
-        [Title(label: "References")]
 
         [Tooltip("Canvas group to update the alpha for.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private CanvasGroup canvasGroup;
-
-        [Title(label: "Settings")]
 
         [Tooltip("Speed of interpolation.")]
         [Range(0.0f, 25.0f)]

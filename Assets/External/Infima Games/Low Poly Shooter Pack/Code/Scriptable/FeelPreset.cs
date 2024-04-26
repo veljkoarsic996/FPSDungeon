@@ -12,16 +12,12 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
         
-        [Title(label: "Camera Feel")]
-        
         [Tooltip("Camera Feel. Holds the values relating to how the camera feels when playing.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         private Feel cameraFeel;
-
-        [Title(label: "Item Feel")]
         
         [Tooltip("Item Feel. Holds the values relating to how the items feels when playing.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         private Feel itemFeel;
         
         #endregion

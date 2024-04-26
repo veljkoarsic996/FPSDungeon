@@ -11,8 +11,6 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
     
-        [Title(label: "Multipliers")]
-        
         [Tooltip("Amount to multiply the mouse sensitivity by while aiming through this scope.")]
         [SerializeField]
         private float multiplierMouseSensitivity = 0.8f;
@@ -21,19 +19,13 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private float multiplierSpread = 0.1f;
 
-        [Title(label: "Interface")]
-
         [Tooltip("Interface Sprite.")]
         [SerializeField]
         private Sprite sprite;
 
-        [Title(label: "Sway")]
-
         [Tooltip("The value to multiply the weapon sway by while aiming through this scope.")]
         [SerializeField]
         private float swayMultiplier = 1.0f;
-        
-        [Title(label: "Aiming Offset")]
         
         [Tooltip("Weapon bone location offset while aiming.")]
         [SerializeField]
@@ -43,8 +35,6 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private Vector3 offsetAimingRotation;
         
-        [Title(label: "Field Of View")]
-
         [Tooltip("Field Of View Multiplier Aim.")]
         [SerializeField]
         private float fieldOfViewMultiplierAim = 0.9f;
@@ -52,8 +42,6 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Field Of View Multiplier Aim Weapon.")]
         [SerializeField]
         private float fieldOfViewMultiplierAimWeapon = 0.7f;
-
-        [Title(label: "Materials")]
 
         [Tooltip("The index of the scope material that gets hidden when we don't aim.")]
         [SerializeField]

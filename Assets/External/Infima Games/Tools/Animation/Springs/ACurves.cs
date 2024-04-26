@@ -42,8 +42,6 @@ namespace InfimaGames
         
         #endregion
 
-        [Title(label: "Location Settings")]
-        
         [Range(0.0f, 10.0f)]
         [Tooltip("Multiplier applied to the location curves.")]
         [SerializeField]
@@ -57,7 +55,6 @@ namespace InfimaGames
         [SerializeField]
         private AnimationCurve[] locationCurves;
 
-        [Title(label: "Rotation Settings")]
         
         [Range(0.0f, 10.0f)]
         [Tooltip("Multiplier applied to the rotation curves.")]

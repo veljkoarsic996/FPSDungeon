@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class DungeonManager : MonoBehaviour
 {
@@ -40,23 +42,30 @@ public class DungeonManager : MonoBehaviour
 
     [SerializeField] List<GameObject> roomList;
 
+    private UnityEvent onDungeonCreated;
+
     public void Init(GameManager gameManager)
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+
         }
         else
         {
             Destroy(gameObject);
         }
+        onDungeonCreated = new UnityEvent();
 
-        CreateDungeon();
+        StartCoroutine(CreateDungeon());
+
+        onDungeonCreated.AddListener(GenerateProps);
     }
 
-    public void CreateDungeon()
+    private IEnumerator CreateDungeon()
     {
+        yield return null;
+
         DestroyAllChildren();
 
         dungeonGenerator.Init(dungeonWidth, dungeonLength);
@@ -92,6 +101,18 @@ public class DungeonManager : MonoBehaviour
             CreateMesh(i + 1, listOfRooms[i].BottomLeftAreaCorner, listOfRooms[i].TopRightAreaCorner, listOfRooms[i].isCorridor);
         }
         CreateWalls(wallParent);
+
+        yield return null;
+        onDungeonCreated.Invoke();
+        yield return null;
+    }
+
+    private void GenerateProps()
+    { 
+        foreach (var room in roomList)
+        {
+            
+        }
     }
 
     private void CreateWalls(GameObject wallParent)
@@ -159,6 +180,7 @@ public class DungeonManager : MonoBehaviour
             holder.name = "Room " + index;
             holder.transform.position = Vector3.zero;
             holder.transform.parent = rooms.transform;
+
             roomList.Add(holder);
         }
         else
@@ -187,6 +209,11 @@ public class DungeonManager : MonoBehaviour
         dungeonRoof.GetComponent<MeshRenderer>().material = material;
         dungeonRoof.GetComponent<MeshCollider>().sharedMesh = mesh;
         dungeonRoof.GetComponent<MeshCollider>().convex = true;
+
+        if (!isCorridor)
+        {
+            holder.AddComponent<Room>().InitRoom(dungeonFloor, dungeonRoof);
+        }
 
         dungeonRoof.tag = "Concrete";
         dungeonFloor.tag = "Concrete";
@@ -238,4 +265,41 @@ public class DungeonManager : MonoBehaviour
             }
         }
     }
+
+    public Vector3 GetRandomPointOnMesh(MeshCollider collider)
+    {
+        Mesh mesh = collider.sharedMesh;
+        int[] triangles = mesh.triangles;
+        Vector3[] vertices = mesh.vertices;
+
+        // Random triangle index
+        int randomTriangleIndex = Random.Range(0, triangles.Length / 3);
+        int vertexIndex1 = triangles[randomTriangleIndex * 3];
+        int vertexIndex2 = triangles[randomTriangleIndex * 3 + 1];
+        int vertexIndex3 = triangles[randomTriangleIndex * 3 + 2];
+
+        Vector3 point1 = vertices[vertexIndex1];
+        Vector3 point2 = vertices[vertexIndex2];
+        Vector3 point3 = vertices[vertexIndex3];
+
+        // Generate random barycentric coordinates
+        float a = Random.value;
+        float b = Random.value * (1 - a);
+        float c = 1 - a - b;
+
+        // Calculate the random point inside the triangle
+        Vector3 randomPoint = a * point1 + b * point2 + c * point3;
+
+        // Transform the point to world space
+        return collider.transform.TransformPoint(randomPoint);
+    }
+
+    public GameObject GetRandomRoom()
+    {
+        return instance.roomList[Random.Range(0, instance.roomList.Count)];
+    }
+
+    public List<GameObject> RoomList { get { return roomList; } }
+
+    public UnityEvent OnDungeonCreated { get { return onDungeonCreated; } }
 }

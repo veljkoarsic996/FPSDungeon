@@ -13,24 +13,20 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
         
-        [Title(label: "Item Curves")]
-        
         [Tooltip("Animation curves played on the item when leaning while the character is aiming.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         private ACurves itemAiming;
         
         [Tooltip("Animation curves played on the item when leaning while the character is standing.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         private ACurves itemStanding;
 
-        [Title(label: "Camera Curves")]
-        
         [Tooltip("Animation curves played on the camera when leaning while the character is aiming.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         
         private ACurves cameraAiming;
         [Tooltip("Animation curves played on the camera when leaning while the character is standing.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         private ACurves cameraStanding;
         
         #endregion

@@ -13,10 +13,9 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
 
-        [Title(label: "References")]
         
         [Tooltip("The character's Animator component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private Animator characterAnimator;
         
         [Tooltip("A WallAvoidance component is required so we can check if the character is facing a wall " +
@@ -26,14 +25,12 @@ namespace InfimaGames.LowPolyShooterPack
         private WallAvoidance wallAvoidance;
         
         [Tooltip("The character's InventoryBehaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private InventoryBehaviour inventoryBehaviour;
 
         [Tooltip("The character's CharacterBehaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private CharacterBehaviour characterBehaviour;
-
-        [Title(label: "Settings")]
 
         [Tooltip("If true, the lowered state is stopped when the character starts firing.")]
         [SerializeField]

@@ -5,8 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] DungeonManager roomManager;
 
+    [SerializeField] private DungeonManager roomManager;
+    [SerializeField] private ObjectsManager objectsManager;
+    [SerializeField] private PlayerManager playerManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,8 +26,11 @@ public class GameManager : MonoBehaviour
         }
 
         roomManager.Init(this);
-
+        objectsManager.Init(this);
+        playerManager.Init(this);
     }
+
+
 
     #region Properties
     public static DungeonManager RoomManager { get { return Instance.roomManager; } }

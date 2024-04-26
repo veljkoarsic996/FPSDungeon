@@ -39,34 +39,24 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS SERIALIZED
         
-        [Title(label: "Offset")]
-        
         [Tooltip("Offset.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         public FeelStateOffset offset;
         
-        [Title(label: "Sway Data")]
-        
         [Tooltip("Settings relating to sway.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         public SwayData swayData;
         
-        [Title(label: "Jumping Curves")]
-
         [Tooltip("Animation curves played when the character jumps.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         public ACurves jumpingCurves;
         
-        [Title(label: "Falling Curves")]
-        
         [Tooltip("Animation curves played when the character falls.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         public ACurves fallingCurves;
         
-        [Title(label: "Landing Curves")]
-
         [Tooltip("Animation curves played when the character lands.")]
-        [SerializeField, InLineEditor]
+        [SerializeField]
         public ACurves landingCurves;
         
         #endregion

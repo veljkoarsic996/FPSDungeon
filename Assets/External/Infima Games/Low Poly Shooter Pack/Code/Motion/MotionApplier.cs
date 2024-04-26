@@ -17,8 +17,6 @@ namespace InfimaGames.LowPolyShooterPack
     public class MotionApplier : MonoBehaviour
     {
         #region FIELDS SERIALIZED
-        
-        [Title(label: "Settings")]
 
         [Tooltip("Determines the way this component applies the values for all subscribed Motion components.")]
         [SerializeField]

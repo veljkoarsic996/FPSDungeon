@@ -11,8 +11,6 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
 
-        [Title(label: "Settings")]
-
         [Tooltip("Sprite. Displayed on the player's interface.")]
         [SerializeField]
         private Sprite sprite;

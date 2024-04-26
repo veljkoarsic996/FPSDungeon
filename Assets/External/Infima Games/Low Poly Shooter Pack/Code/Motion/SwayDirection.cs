@@ -11,8 +11,6 @@ namespace InfimaGames.LowPolyShooterPack
     [Serializable]
     public struct SwayDirection
     {
-        [Title(label: "Location Settings")]
-        
         [Range(0.0f, 10.0f)]
         [Tooltip("Multiplier applied to the location curves.")]
         [SerializeField]
@@ -22,8 +20,6 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         public AnimationCurve[] locationCurves;
 
-        [Title(label: "Rotation Settings")]
-        
         [Range(0.0f, 10.0f)]
         [Tooltip("Multiplier applied to the rotation curves.")]
         [SerializeField]

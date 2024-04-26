@@ -20,13 +20,10 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS SERIALIZED
         
-        [Title(label: "References")]
         
         [Tooltip("The Transform of the character's camera.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private Transform playerCamera;
-        
-        [Title(label: "Settings")]
         
         [Tooltip("The maximum distance to check for walls.")]
         [Range(0.0f, 1.0f)]

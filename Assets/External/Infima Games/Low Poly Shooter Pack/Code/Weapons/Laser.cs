@@ -16,8 +16,6 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
 
-        [Title(label: "Settings")]
-
         [Tooltip("Sprite. Displayed on the player's interface.")]
         [SerializeField]
         private Sprite sprite;
@@ -38,8 +36,6 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool turnOffWhileAiming = true;
         
-        [Title(label: "Audio")]
-        
         [Tooltip("The AudioClip played when toggling the laser.")]
         [SerializeField]
         private AudioClip toggleClip;
@@ -48,18 +44,14 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private AudioSettings toggleAudioSettings;
         
-        [Title(label: "Expanded Settings")]
-        
         [Tooltip("Transform of the laser.")]
         [SerializeField]
         private Transform laserTransform;
 
-        [ShowIf("laserType", LaserType.Lasersight)]
         [Tooltip("Determines how thick the laser beam is.")]
         [SerializeField]
         private float beamThickness = 1.2f;
 
-        [ShowIf("laserType", LaserType.Lasersight)]
         [Tooltip("Maximum distance for tracing the laser beam.")]
         [SerializeField]
         private float beamMaxDistance = 500.0f;

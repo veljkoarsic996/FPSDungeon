@@ -12,8 +12,6 @@ namespace InfimaGames.LowPolyShooterPack.Interface
     {
         #region FIELDS SERIALIZED
         
-        [Title(label: "References")]
-        
         [Tooltip("Tutorial prompt text.")]
         [SerializeField]
         private TextMeshProUGUI prompt;

@@ -12,15 +12,13 @@ namespace InfimaGames.LowPolyShooterPack
     public class LaserToggleInput : MonoBehaviour
     {
         #region FIELDS SERIALIZED
-        
-        [Title(label: "References")]
 
         [Tooltip("The character's Animator component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private Animator animator;
         
         [Tooltip("The character's InventoryBehaviour component.")]
-        [SerializeField, NotNull]
+        [SerializeField]
         private InventoryBehaviour inventoryBehaviour;
 
         #endregion

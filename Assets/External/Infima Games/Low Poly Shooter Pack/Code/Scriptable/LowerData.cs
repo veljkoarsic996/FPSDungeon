@@ -31,13 +31,9 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS SERIALIZED
 
-        [Title(label: "Interpolation")]
-
         [Tooltip("Interpolation settings.")]
         [SerializeField]
         private SpringSettings interpolation = SpringSettings.Default();
-
-        [Title(label: "Offsets")]
 
         [Tooltip("Location offset applied in the lowered state.")]
         [SerializeField]

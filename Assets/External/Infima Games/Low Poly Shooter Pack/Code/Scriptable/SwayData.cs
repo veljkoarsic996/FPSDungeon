@@ -33,19 +33,13 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS SERIALIZED
 
-        [Title(label: "Look")]
-        
         [Tooltip("Look Sway.")]
         [SerializeField]
         private SwayType look;
 
-        [Title(label: "Movement")]
-        
         [Tooltip("Movement Sway.")]
         [SerializeField]
         private SwayType movement;
-        
-        [Title(label: "Spring Settings")]
         
         [Tooltip("Spring Settings For Sway.")]
         [SerializeField]

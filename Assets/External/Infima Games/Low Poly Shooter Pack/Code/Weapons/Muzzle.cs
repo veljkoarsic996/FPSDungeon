@@ -12,8 +12,6 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
 
-        [Title(label: "Settings")]
-        
         [Tooltip("Socket at the tip of the Muzzle. Commonly used as a firing point.")]
         [SerializeField]
         private Transform socket;
@@ -26,8 +24,6 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private AudioClip audioClipFire;
         
-        [Title(label: "Particles")]
-        
         [Tooltip("Firing Particles.")]
         [SerializeField]
         private GameObject prefabFlashParticles;
@@ -35,8 +31,6 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Number of particles to emit when firing.")]
         [SerializeField]
         private int flashParticlesCount = 5;
-
-        [Title(label: "Flash Light")]
 
         [Tooltip("Muzzle Flash Prefab. A small light we use when firing.")]
         [SerializeField]
